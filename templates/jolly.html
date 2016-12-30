@@ -1,0 +1,34 @@
+<script type="text/template" id="jolly-template">
+    <div class="jolly-content">
+        <div class="content">
+            <div class="page-header">
+                <h1>Scelta del box di jolly</h1>
+            </div>
+            <div class="centered">
+                <div class="btn-group form-group jolly_setting" data-toggle="buttons">
+                    <label class="btn btn-default <% if(data.default == 'nojolly') { %>active<% } %>" data-panel="nojolly">
+                        <input name="options" id="nojolly_check" autocomplete="off" checked="" type="radio"> Disable jolly box
+                    </label>
+                    <label class="btn btn-default <% if(data.default == 'defaultjolly') { %>active<% } %>" data-panel="defaultjolly">
+                        <input name="options" id="defaultjolly_check" autocomplete="off" type="radio"> Enable jolly box
+                    </label>
+                </div>
+            </div>
+            <div class="settings_panel panel panel-success">
+
+            </div>
+        </div>
+        <button class="btn btn-default save-btn">Salva</button>
+
+        <div class="hidden">
+            <div id="nojolly_panel">
+                <div class="">Non sarà presente alcun box jolly nella prossima spedizione.</div>
+            </div>
+            <div id="defaultjolly_panel">
+                <div class="">Se presente per l'utente, nella prossima spedizione sarà un box jolly con il relativo contenuto, nella posizione (top/bottom) ad esso associata.</div>
+            </div>
+        </div>
+    </div>
+    <br /><br />
+    <div class="breadcrumb centered"><a data-page="home" class="openpage" href="#"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>Back</a></div>
+</script>

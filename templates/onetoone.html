@@ -1,0 +1,47 @@
+<script type="text/template" id="onetoone-template">
+    <div class="onetoone-content">
+        <div class="content">
+            <div class="page-header">
+                <h1>Scelta del box di one-to-one</h1>
+            </div>
+            <div class="centered">
+                <div class="btn-group form-group onetoone_setting" data-toggle="buttons">
+                    <label class="btn btn-default <% if(data.default == 'noonetoone') { %>active<% } %>" data-panel="noonetoone">
+                        <input name="options" id="noonetoone_check" autocomplete="off" checked="" type="radio"> Disable one-to-one box
+                    </label>
+                    <label class="btn btn-default <% if(data.default == 'defaultonetoone') { %>active<% } %>" data-panel="defaultonetoone">
+                        <input name="options" id="defaultonetoone_check" autocomplete="off" type="radio"> Enable one-to-one box
+                    </label>
+                </div>
+            </div>
+            <div class="settings_panel panel panel-success">
+
+            </div>
+        </div>
+        <button class="btn btn-default save-btn">Salva</button>
+
+        <div class="hidden">
+            <div id="noonetoone_panel">
+                <div class="">Non sarà presente alcun box one-to-one (voucher) nella prossima spedizione, saranno presenti solo offerte di tipo market level.</div>
+            </div>
+            <div id="defaultonetoone_panel">
+                <p class="">
+                    <p>Se presente per l'utente, nella prossima spedizione sarà un box one-to-one con il relativo contenuto, nella posizione impostata di seguito:</p>
+                    <div class="">
+                        <div class="btn-group form-group onetoone_position_setting" data-toggle="buttons">
+                            <label class="btn btn-default <% if(data.position == 'top') { %>active<% } %>" data-panel="noonetoone">
+                                <input name="options" id="top_check" autocomplete="off" checked="" type="radio"> Top
+                            </label>
+                            <label class="btn btn-default <% if(data.position == 'bottom') { %>active<% } %>" data-panel="defaultonetoone">
+                                <input name="options" id="bottom_check" autocomplete="off" type="radio"> Bottom
+                            </label>
+                        </div>
+                    </div>
+                    <p>Le impostazioni qui definite avranno effetto solo per le dimensioni <b>Price sensitive</b> e <b>Value for money</b>.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br /><br />
+    <div class="breadcrumb centered"><a data-page="home" class="openpage" href="#"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>Back</a></div>
+</script>

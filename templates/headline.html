@@ -1,0 +1,40 @@
+<script type="text/template" id="headline-template">
+    <div class="headline-content">
+        <div class="content">
+            <div class="page-header">
+                <h1>Scelta del box di headline</h1>
+            </div>
+            <div class="centered">
+                <div class="btn-group form-group headline_setting" data-toggle="buttons">
+                    <label class="btn btn-default <% if(data.default == 'noheadline') { %>active<% } %>" data-panel="noheadline">
+                        <input name="options" id="noheadline_check" autocomplete="off" checked="" type="radio"> No headline box
+                    </label>
+                    <label class="btn btn-default <% if(data.default == 'defaultheadline') { %>active<% } %>" data-panel="defaultheadline">
+                        <input name="options" id="defaultheadline_check" autocomplete="off" type="radio"> Default headline
+                    </label>
+                    <label class="btn btn-default <% if(data.default == 'jollyheadline') { %>active<% } %>" data-panel="jollyheadline">
+                        <input name="options" id="jollyheadline_check" autocomplete="off" type="radio"> Jolly headline
+                    </label>
+                </div>
+            </div>
+            <div class="settings_panel panel panel-success">
+
+            </div>
+        </div>
+        <button class="btn btn-default save-btn">Salva</button>
+
+        <div class="hidden">
+            <div id="noheadline_panel">
+                <div class="">Non sarà presente alcun box di headline nella prossima spedizione.</div>
+            </div>
+            <div id="defaultheadline_panel">
+                <div class="">Il sistema considererà i contenuti standard definiti per il box headline della prossima spedizione.</div>
+            </div>
+            <div id="jollyheadline_panel">
+                <div class="">Verrà inserito il contenuto jolly, configurato per ciascuna declinazione possibile di utenti, nel box di headline della prossima spedizione.</div>
+            </div>
+        </div>
+    </div>
+    <br /><br />
+    <div class="breadcrumb centered"><a data-page="home" class="openpage" href="#"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>Back</a></div>
+</script>

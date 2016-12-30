@@ -1,0 +1,33 @@
+<script type="text/template" id="sorting-template">
+    <div class="sorting-content">
+        <div class="page-header">
+            <h1>Sorting Departures</h1>
+        </div>
+        <div class="row">
+            <div class="col-md-10">
+                <div class="form-group">
+                    <label for="criterio_sorting">Ordina per: </label>
+                    <select class="form-control" id="criterio_sorting">
+                        <option value="ranking" selected>Ranking (default)</option>
+                        <option value="prezzo">Prezzo</option>
+                        <option value="availability">Disponibilità dell'offerta</option>
+                        <option value="date">Data di partenza</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="btn-group form-group ordine_sorting pull-right" data-toggle="buttons">
+                    <label class="btn btn-default active">
+                        <input type="radio" name="options" id="asc_sorting" autocomplete="off" checked> Asc
+                    </label>
+                    <label class="btn btn-default">
+                        <input type="radio" name="options" id="desc_sorting" autocomplete="off"> Desc
+                    </label>
+                </div>
+            </div>
+        </div>
+        <button class="btn btn-default save-btn">Salva</button>
+    </div>
+    <br /><br />
+    <div class="breadcrumb centered"><a data-page="home" class="openpage" href="#"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>Back</a></div>
+</script>

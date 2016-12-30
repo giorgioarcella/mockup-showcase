@@ -1,0 +1,31 @@
+{
+  "price": [{
+    "label": "Price no concern",
+    "slug": "pricenoconcern"
+  }, {
+    "label": "Value for money",
+    "slug": "valueformoney"
+  }, {
+    "label": "Price sensitive",
+    "slug": "pricesensitive"
+  }],
+  "place": [{
+    "label": "Beach and sea",
+    "slug": "pricenoconcern"
+  }, {
+    "label": "Culture and art",
+    "slug": "cultureandart"
+  }, {
+    "label": "Nature and landscapes",
+    "slug": "natureandlandscapes"
+  }, {
+    "label": "City biters",
+    "slug": "citybiters"
+  }, {
+    "label": "Sailorman",
+    "slug": "sailorman"
+  }, {
+    "label": "Around the world adventurers",
+    "slug": "aroundtheworldadventurers"
+  }]
+}

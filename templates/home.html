@@ -1,0 +1,14 @@
+<script type="text/template" id="home-template">
+    <div class="home-content">
+        <div class="content">
+            <div class="page-header">
+                <h1><%= data.appsettings.title %> <small><%= data.appsettings.subtitle %></small></h1>
+            </div>
+            <ul class="list-group">
+                <% _.each(data.appsettings.navbar.section, function(value, key) { %>
+                    <li><a data-page="<%= value.datapage %>" class="list-group-item openpage" class="list-group-item" href="#"><%= value.label %></a></li>
+                <% }) %>
+            </ul>
+        </div>
+    </div>
+</script>

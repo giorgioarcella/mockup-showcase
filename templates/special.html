@@ -1,0 +1,34 @@
+<script type="text/template" id="special-template">
+    <div class="special-content">
+        <div class="content">
+            <div class="page-header">
+                <h1>Scelta del box di special</h1>
+            </div>
+            <div class="centered">
+                <div class="btn-group form-group special_setting" data-toggle="buttons">
+                    <label class="btn btn-default <% if(data.default == 'nospecial') { %>active<% } %>" data-panel="nospecial">
+                        <input name="options" id="nospecial_check" autocomplete="off" checked="" type="radio"> Disable Special box
+                    </label>
+                    <label class="btn btn-default <% if(data.default == 'defaultspecial') { %>active<% } %>" data-panel="defaultspecial">
+                        <input name="options" id="defaultspecial_check" autocomplete="off" type="radio"> Enable Special box
+                    </label>
+                </div>
+            </div>
+            <div class="settings_panel panel panel-success">
+
+            </div>
+        </div>
+        <button class="btn btn-default save-btn">Salva</button>
+
+        <div class="hidden">
+            <div id="nospecial_panel">
+                <div class="">Non sarà presente alcun box Special nella prossima spedizione.</div>
+            </div>
+            <div id="defaultspecial_panel">
+                <div class="">Se presente per l'utente, nella prossima spedizione sarà un box Special con il relativo contenuto, nella posizione (top/bottom) ad esso associata.</div>
+            </div>
+        </div>
+    </div>
+    <br /><br />
+    <div class="breadcrumb centered"><a data-page="home" class="openpage" href="#"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>Back</a></div>
+</script>

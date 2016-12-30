@@ -1,0 +1,79 @@
+/*General rules*/
+.notfilled{
+    border: 1px solid red !important;
+}
+.clearer {
+    clear: both;
+}
+.hidden{
+    display: none;
+}
+/*Stile generale bottoni e liste*/
+.actions-icon{
+    font-size: 30px;
+    margin-top: 20px;
+    text-align: right;
+}
+.actions-icon:hover{
+    cursor: pointer;
+}
+.save-icon:hover span, .success{
+    color: green;
+}
+.delete-icon:hover span, .errormsg{
+    color: red;
+}
+.list-group li{
+    list-style: none;
+}
+.panel-success{
+    padding: 10px;
+}
+.panel-success.success{
+    background-color: palegreen;
+}
+/*Loader*/
+.loadingclab{
+    position: fixed;
+    top: 40%;
+    width: 100%;
+    text-align: center;
+    z-index:1000;
+}
+.loadingclabbackground, html body .spinner-overlay{
+    position: fixed;
+    z-index: 100;
+    width: 100%;
+    display: block;
+    top: 0px;
+    text-align: center;
+}
+html body .spinner-overlay .spinner{
+    position: relative;
+    top: 40%;
+    display: block;
+    margin: auto;
+}
+.spinner{
+    display: inline-block;
+    position: relative;
+    top: 8px;
+}
+/*Home content*/
+.home-content, .centered{
+    text-align: center;
+}
+/*Navbar*/
+.navbar-default{
+    max-height: 50px;
+}
+.navbar-collapse {
+    text-align: center;
+}
+
+/*Responsive*/
+@media (min-width:991px){
+    .ordine_sorting{
+        top: 18px;
+    }
+}
