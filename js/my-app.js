@@ -24,7 +24,7 @@ var app = {
             }
         });
 
-        $.getJSON( "json/appsettings.json", function( appsettings ) {
+        $.getJSON( "config.json", function( appsettings ) {
             self.appsettings = appsettings;
             $.get('templates/navigation.html',
                 {},
@@ -48,7 +48,10 @@ var app = {
             }
             });
             self.opensection('home');
-        });
+        }).fail( function(d, textStatus, error) {
+            $('.container').html("<h1>No config.json file found!</h1><p>getJSON failed, status: " + textStatus + ", error: "+error+"</p>");
+            console.error("getJSON failed, status: " + textStatus + ", error: "+error);
+        });;
     },
 
     showLoader: function(){
