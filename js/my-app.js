@@ -4,12 +4,15 @@
 
 var app = {
 
+    //Inizializzo oggetto dati di configurazione
     appsettings: {},
 
+    //Funzione che viene lanciata quando viene caricato il documento
     initialize: function() {
 
         var self = this;
 
+        //Estensione di jQuery per lanciare animazioni con animate.css
         $.fn.extend({
             /** @function animateCss
              * jQuery extension fot animate.css animations */
@@ -24,6 +27,7 @@ var app = {
             }
         });
 
+        //Caricamento file di configurazione (comprende menu e serie di views per home e navigazione)
         $.getJSON( "config.json", function( appsettings ) {
             self.appsettings = appsettings;
             $.get('templates/navigation.html',
@@ -54,21 +58,25 @@ var app = {
         });;
     },
 
+    //Mostro loader animato
     showLoader: function(){
         $('.loadingclabbackground').css('height','100%').fadeIn();
         $('.loadingclab').fadeIn();
     },
 
+    //Nascondo loader
     hideLoader: function(){
         $('.loadingclab').hide();
         $('.loadingclabbackground').hide();
     },
 
+    //Mostro loader e poi lo nascondo non appena cambia rotta
     showAndHideLoader: function(){
         showLoader();
         window.onunload = hideLoader;
     },
 
+    //Carico la view passata in argomento
     opensection: function(name){
         var self = this;
         $.get('templates/'+name+'.html',
@@ -110,6 +118,7 @@ var app = {
         );
     },
 
+    //Renderizzo la view passando al template i dati
     render: function(name, data){
         var self = this;
         var template = _.template($('#' + name + '-template').html());
@@ -151,7 +160,6 @@ var app = {
     },
 
     subjectpage: function(data){
-
         var $padre = $('.subject-content');
 
         $padre.find('.delete-icon').off();
@@ -204,7 +212,6 @@ var app = {
     },
 
     limitnumberpage: function(data){
-
         var $padre = $('.limitnumber-content');
 
         $padre.find('.delete-icon').off();
@@ -254,7 +261,6 @@ var app = {
     },
 
     headlinepage: function(data){
-
         var $padre = $('.headline-content');
 
         var panel_default = $padre.find('.headline_setting .btn.active').attr('data-panel');
@@ -268,7 +274,6 @@ var app = {
     },
 
     specialpage: function(data){
-
         var $padre = $('.special-content');
 
         var panel_default = $padre.find('.special_setting .btn.active').attr('data-panel');
@@ -282,7 +287,6 @@ var app = {
     },
 
     jollypage: function(data){
-
         var $padre = $('.jolly-content');
 
         var panel_default = $padre.find('.jolly_setting .btn.active').attr('data-panel');
@@ -296,7 +300,6 @@ var app = {
     },
 
     onetoonepage: function(data){
-
         var $padre = $('.onetoone-content');
 
         var panel_default = $padre.find('.onetoone_setting .btn.active').attr('data-panel');
@@ -309,7 +312,7 @@ var app = {
         });
     }
 
-}
+};
 
 $(document).ready(function(){
     app.initialize();

@@ -12,7 +12,7 @@ E' sufficiente creare un file html con il template della vista desiderata (sotto
 
 ```
 <script type="text/template" id="newsection-template">
-    <div class="special-content">
+    <div class="newsection-content">
         <div class="content">
             <div class="page-header">
                 <h1><%= data.title %></h1>
@@ -64,8 +64,6 @@ Automatizzazione della creazione della struttura dati di una nuova vista.
 ## Authors
 
 * **Giorgio Arcella** - *Contactlab Mockup Showcase* - [github.com/giorgioarcella](https://github.com/giorgioarcella)
-
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
 
 ## License
 
