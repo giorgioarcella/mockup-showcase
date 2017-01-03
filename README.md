@@ -32,7 +32,7 @@ Per fornire al template dei dati basta creare la corrispondente struttura json (
 }
 ```
 
-Infine, la logica dell'applicazione va inserita in js/my-app.js, creando una funzione apposita nell'oggetto "app":
+La logica dell'applicazione va inserita in js/my-app.js, creando una funzione apposita nell'oggetto "app":
 
 ```
 ...
@@ -42,13 +42,24 @@ Infine, la logica dell'applicazione va inserita in js/my-app.js, creando una fun
 ...
 ```
 
-e, al momento, va aggiunta anche la chiamata alla funzione sotto "opensection":
+Ll momento, va aggiunta anche la chiamata alla funzione sotto "opensection":
 
 ```
 ...
     }else if(name == 'newsection'){
         self.newsectionpage(data);
     }
+...
+```
+
+Infine, va aggiunto nel file config.json l'oggetto relativo alla nuova vista creata:
+
+```
+...
+    {
+        "label" : "Nuova vista",
+        "datapage" : "newsection"
+      }
 ...
 ```
 
