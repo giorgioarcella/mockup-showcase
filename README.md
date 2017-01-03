@@ -2,13 +2,13 @@
 
 Framework per sviluppare funzionalità e interfacce da presentare
 
-### Prerequisiti
+### Come iniziare
 
 E' sufficiente clonare il progetto, non serve alcun server.
 
 ### Creare una nuova vista
 
-E' sufficiente creare un file html con il template della vista desiderata (sotto /templates). Esempio - /templates/newsection.html:
+Creare un file html con il template della vista desiderata (sotto /templates). Esempio - /templates/newsection.html:
 
 ```
 <script type="text/template" id="newsection-template">
