@@ -103,6 +103,8 @@ var app = {
                         self.onetoonepage(data);
                     }else if(name == 'preview'){
                         self.previewpage(data);
+                    }else if(name == 'schedulation'){
+                        self.schedulationpage(data);
                     }
                     $('.openpage').off();
                     $('.openpage').click(function(){
@@ -334,7 +336,6 @@ var app = {
 		$padre.find('select').on('change', function(){
 			if(($padre.find('select#preview_price').val() != null) && ($padre.find('select#preview_place').val() != null)){
 				var tupla = $padre.find('select#preview_price').val()+'-'+$padre.find('select#preview_place').val();
-				console.log(data.settings[tupla]);
 				if(data.settings[tupla] != ''){
 					var vars = {dati: data.settings[tupla]};
 					console.log(vars);
@@ -375,7 +376,22 @@ var app = {
 			},
 		});
 		*/
-	}
+	},
+
+    schedulationpage: function(data){
+        var $padre = $('.schedulation-content');
+        $padre.find('.btn').on('click', function(){
+            if($(this).hasClass('gotrue')){
+                $(this).parents('.row').find('.date').fadeIn();
+            }else{
+                $(this).parents('.row').find('.date').fadeOut();
+            }
+        });
+        $padre.find('.datepickerschedulation').datepicker({
+            format: 'mm/dd/yyyy',
+            startDate: '+1d'
+        });
+    }
 
 };
 

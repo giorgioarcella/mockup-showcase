@@ -41,6 +41,10 @@ div.modal-body.listabox{
 div.modal-body.listabox div.style-scope{
     padding: 5px;
 }
+div.inline-days div.style-scope{
+    display:inline-block;
+    margin-right:10px;
+}
 /*Stile generale bottoni e liste*/
 input[type="checkbox"] + label, .key-value li input[type="checkbox"] + span:first-of-type, input[type="radio"] + label, .key-value li input[type="radio"] + span:first-of-type{
     font-size: 1.1em !important;
@@ -119,20 +123,27 @@ html body .spinner-overlay .spinner{
     text-align: center;
 }
 /*Preview*/
-.preview-content ul{
+.preview-content ul.htmlblocks{
     list-style: none;
     margin: 0;
     padding: 0;
     width: 100%;
 }
-.preview-content ul li{
+.preview-content ul.htmlblocks li.block{
     padding: 10px;
     margin: 0 0 15px;
     text-align: center;
     background-color: #ccc;
 	vertical-align: middle;
 }
-.preview-content ul li.slide {
+.preview-content ul.htmlblocks li.block.default, .preview-content ul.htmlblocks li.block:nth-last-child(1){
+    margin: 0px;
+}
+.preview-content ul.htmlblocks li.block.slide {
+}
+.preview-content ul.htmlblocks li.block p{
+    margin-bottom: 5px;
+    padding-bottom: 0px;
 }
 /*.preview-content ul li.slide:hover {
     background-color: #cfcfcf;
@@ -157,10 +168,10 @@ html body .spinner-overlay .spinner{
 	background-color: #ccc;
 }
 .preview-content .headline {
-    min-height: 100px;
+    min-height: 60px;
 }
 .preview-content .partenze {
-    min-height: 80px;
+    min-height: 100px;
 }
 .preview-content .jolly {
     min-height: 60px;
@@ -170,6 +181,10 @@ html body .spinner-overlay .spinner{
 }
 .preview-content .voucher {
     min-height: 40px;
+}
+.preview-content ul li{
+    padding: 5px;
+    margin: 0px;
 }
 /*Responsive*/
 @media (min-width:991px){
