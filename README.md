@@ -1,4 +1,4 @@
-# ContactLab Mockup Showcase
+# Mockup Showcase
 
 Framework to develop functionalities and interfaces to be presented
 
