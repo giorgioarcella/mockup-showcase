@@ -38,7 +38,13 @@ div.row.abbassatitoli:nth-child(even), div.row.bottongroups:nth-child(even){
 div.modal-body.listabox{
     padding: 10px;
 }
+div.modal-body.listabox div.style-scope{
+    padding: 5px;
+}
 /*Stile generale bottoni e liste*/
+input[type="checkbox"] + label, .key-value li input[type="checkbox"] + span:first-of-type, input[type="radio"] + label, .key-value li input[type="radio"] + span:first-of-type{
+    font-size: 1.1em !important;
+}
 .actions-icon{
     font-size: 30px;
     margin-top: 20px;

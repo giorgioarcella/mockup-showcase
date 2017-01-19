@@ -215,6 +215,13 @@ var app = {
 
     sortingpage: function(data){
         var $padre = $('.sorting-content');
+        $padre.find('select.criterio_sorting').on('change', function(){
+            if($(this).val() != 'ranking'){
+                $(this).parents('.row').find('.ascdesc').fadeIn();
+            }else{
+                $(this).parents('.row').find('.ascdesc').fadeOut();
+            }
+        });
     },
 
     availabilitypage: function(data){

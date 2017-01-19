@@ -1,0 +1,109 @@
+{
+	"back" : "jolly", 
+	"next" : "schedulation", 
+	"dimensions" : {
+		"price": [{
+		  "label": "Price no concern",
+		  "slug": "pricenoconcern"
+		}, {
+		  "label": "Value for money",
+		  "slug": "valueformoney"
+		}, {
+		  "label": "Price sensitive",
+		  "slug": "pricesensitive"
+		}],
+		"place": [{
+		  "label": "Beach and sea",
+		  "slug": "beachandsea"
+		}, {
+		  "label": "Culture and art",
+		  "slug": "cultureandart"
+		}, {
+		  "label": "Nature and landscapes",
+		  "slug": "natureandlandscapes"
+		}, {
+		  "label": "City biters",
+		  "slug": "citybiters"
+		}, {
+		  "label": "Sailorman",
+		  "slug": "sailorman"
+		}, {
+		  "label": "Around the world adventurers",
+		  "slug": "aroundtheworldadventurers"
+		}]
+	},
+	"settings": {
+		"pricenoconcern-cultureandart" : {
+			"subject"  : {
+				"jolly" : "ciaociaodhuis"
+			},
+			"headline" : {
+				"enabled" : "true",
+				"jolly" : "355"
+			},
+			"voucher"  : {
+				"enabled" : "true",
+				"id" : "80",
+				"type" : "premium"
+			},
+			"partenze" : {
+				"sorting" : "ranking",
+				"limit" : "2"
+			},
+			"partenzejolly"  : [
+				"15", "25", "39"
+			],
+			"people" : {
+				"enabled" : "true",
+				"data" : [
+					{
+					  "label": "Family with kids (0-12 yo)",
+					  "slug": "familywithkids"
+					}, {
+					  "label": "Family with kids (12+ yo)",
+					  "slug": "familywithkids12"
+					}, {
+					  "label": "In groups",
+					  "slug": "groups"
+					}
+				]
+			}
+		},
+		"pricenoconcern-beachandsea" : {
+			"subject"  : {
+				"jolly" : ""
+			},
+			"headline" : {
+				"enabled" : "true",
+				"jolly" : ""
+			},
+			"voucher"  : {
+				"enabled" : "true",
+				"id" : "7",
+				"type" : "premium"
+			},
+			"partenze" : {
+				"sorting" : "ranking",
+				"limit" : "2"
+			},
+			"partenzejolly"  : [
+				"1", "2", "44"
+			],
+			"people" : {
+				"enabled" : "true",
+				"data" : [
+					{
+					  "label": "Family with kids (0-12 yo)",
+					  "slug": "familywithkids"
+					}, {
+					  "label": "Family with kids (12+ yo)",
+					  "slug": "familywithkids12"
+					}, {
+					  "label": "In groups",
+					  "slug": "groups"
+					}
+				]
+			}
+		}
+	}
+}
