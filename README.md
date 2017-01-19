@@ -5,6 +5,11 @@ Framework to develop functionalities and interfaces to be presented
 ### Getting Started
 
 Simply clone the project, it does not need any server.
+Create a config.json file:
+```
+    cp config.json.dist config.json
+```
+You are ready!
 
 ### Creating a new view
 
