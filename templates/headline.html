@@ -1,27 +1,69 @@
 <script type="text/template" id="headline-template">
-    <div class="headline-content">
+    <div class="maincontent headline-content">	
+	
         <div class="content">
             <div class="page-header">
                 <h1>Scelta del box di headline</h1>
             </div>
-            <div class="centered">
+			<!--<div class="panel panel-default">
+				<div class="panel-body">
+					<h2>Headline Jolly creati:</h2>
+					<ul>
+						<li><a href="#" target="_blank">5 - Buon Natale</a></li>
+						<li><a href="#" target="_blank">7 - Buona Pasqua</a></li>
+					</ul>
+				</div>
+			</div>-->
+            <!--<div class="centered">
                 <div class="btn-group form-group headline_setting" data-toggle="buttons">
-                    <label class="btn btn-default <% if(data.default == 'noheadline') { %>active<% } %>" data-panel="noheadline">
+                    <label class="btn btn-default gotrue <% if(data.default == 'noheadline') { %>active<% } %>" data-panel="noheadline">
                         <input name="options" id="noheadline_check" autocomplete="off" checked="" type="radio"> No headline box
                     </label>
-                    <label class="btn btn-default <% if(data.default == 'defaultheadline') { %>active<% } %>" data-panel="defaultheadline">
+                    <label class="btn btn-default gotrue <% if(data.default == 'defaultheadline') { %>active<% } %>" data-panel="defaultheadline">
                         <input name="options" id="defaultheadline_check" autocomplete="off" type="radio"> Default headline
                     </label>
-                    <label class="btn btn-default <% if(data.default == 'jollyheadline') { %>active<% } %>" data-panel="jollyheadline">
+                    <label class="btn btn-default gotrue <% if(data.default == 'jollyheadline') { %>active<% } %>" data-panel="jollyheadline">
                         <input name="options" id="jollyheadline_check" autocomplete="off" type="radio"> Jolly headline
                     </label>
                 </div>
-            </div>
+            </div>-->
+			<% _.each(data.dimensions.price, function(pricedimension) { %>
+				<% _.each(data.dimensions.place, function(placedimension) { %>
+					<div class="row bottongroups">
+						<div class="col-md-2 ">
+							<b><%= pricedimension.label %></b>
+						</div>
+						<div class="col-md-3 ">
+							<b><%= placedimension.label %></b>
+						</div>
+						<div class="btn-group form-group headline_setting col-md-5" data-toggle="buttons">
+							<label class="btn btn-default <% if(data.default == 'noheadline') { %>active<% } %>" data-panel="noheadline">
+								<input name="options" id="noheadline_check" autocomplete="off" checked="" type="radio"> No headline box
+							</label>
+							<label class="btn btn-default gotrue <% if(data.default == 'defaultheadline') { %>active<% } %>" data-panel="defaultheadline">
+								<input name="options" id="defaultheadline_check" autocomplete="off" type="radio"> Default headline
+							</label>
+							<label class="btn btn-default gotrue jolly <% if(data.default == 'jollyheadline') { %>active<% } %>" data-panel="jollyheadline">
+								<input name="options" id="jollyheadline_check" autocomplete="off" type="radio"> Jolly headline
+							</label>
+						</div>
+						<div class="col-md-2 viewboxheadlinelist" style="display:none">
+							<a href="#">Visualizza box creato</a>
+						</div>
+					</div>
+				<% }) %>
+			<% }) %>
             <div class="settings_panel panel panel-success">
 
             </div>
         </div>
-        <button class="btn btn-default save-btn">Salva</button>
+        <div class="final-actions save">
+            <button class="btn btn-default save-btn pull-right">Salva Impostazioni</button>
+        </div>
+        <div class="final-actions final-navigation">
+            <button class="btn btn-default back-btn">Indietro</button>
+            <button class="btn btn-default next-btn pull-right">Avanti</button>
+        </div>
 
         <div class="hidden">
             <div id="noheadline_panel">
@@ -35,6 +77,4 @@
             </div>
         </div>
     </div>
-    <br /><br />
-    <div class="breadcrumb centered"><a data-page="home" class="openpage" href="#"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>Back</a></div>
 </script>

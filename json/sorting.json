@@ -1,4 +1,6 @@
 {
+  "back" : "subject", 
+  "next" : "limitnumber", 
   "dimensions" : {
     "price": [{
       "label": "Price no concern",

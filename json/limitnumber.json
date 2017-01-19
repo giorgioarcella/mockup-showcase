@@ -1,4 +1,6 @@
 {
+  "back" : "sorting", 
+  "next" : "availability", 
   "dimensions" : {
     "price": [{
       "label": "Price no concern",

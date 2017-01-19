@@ -1,10 +1,26 @@
 <script type="text/template" id="subject-template">
-    <div class="subject-content">
+    <div class="maincontent subject-content">
         <div class="page-header">
             <h1>Subject Settings</h1>
         </div>
         <div class="content">
-            <h3>Configura un nuovo subject:</h3>
+            <% _.each(data.dimensions.price, function(pricedimension) { %>
+                <% _.each(data.dimensions.place, function(placedimension) { %>
+                <div class="row abbassatitoli">
+                    <div class="col-md-2 titolo">
+                        <b><%= pricedimension.label %></b>
+                    </div>
+                    <div class="col-md-3 titolo">
+                        <b><%= placedimension.label %></b>
+                    </div>
+                    <div class="col-md-7 form-group">
+                        <label>Subject: </label>
+                        <input id="subject_text" type="text" class="form-control" value="<%= data.subjectjollys[pricedimension.slug+placedimension.slug] %>" />
+                    </div>
+                </div>
+                <% }) %>
+            <% }) %>
+            <!--<h3>Configura un nuovo subject:</h3>
             <div class="choose_tupla row">
                 <% _.each(data.dimensions, function(value, key) { %>
                 <div class="form-group col-md-3">
@@ -37,24 +53,28 @@
                 </div>
                 <h3>Subjects configurati:</h3>
                 <% _.each(data.settings, function(value, key) { %>
-                <div class="row">
-                    <div class="col-md-5 form-group">
-                        <label>Dimensione: </label>
-                        <input class="form-control" disabled value="<%= value.tupla %>" />
-                    </div>
-                    <div class="col-md-6 form-group">
-                        <label>Subject: </label>
-                        <input class="form-control" disabled value="<%= value.subject %>" />
-                    </div>
-                    <div class="col-md-1 actions-icon delete-icon">
-                        <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
-                    </div>
-                </div>
+					<div class="row">
+						<div class="col-md-5 form-group">
+							<label>Dimensione: </label>
+							<input class="form-control" disabled value="<%= value.tupla %>" />
+						</div>
+						<div class="col-md-6 form-group">
+							<label>Subject: </label>
+							<input class="form-control" disabled value="<%= value.subject %>" />
+						</div>
+						<div class="col-md-1 actions-icon delete-icon">
+							<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+						</div>
+					</div>
                 <% }) %>
-            </div>
+            </div>-->
         </div>
-        <button class="btn btn-default save-btn">Salva</button>
+        <div class="final-actions save">
+            <button class="btn btn-default save-btn pull-right">Salva impostazioni</button>
+        </div>
+        <div class="final-actions final-navigation">
+            <button class="btn btn-default back-btn">Indietro</button>
+            <button class="btn btn-default next-btn pull-right">Avanti</button>
+        </div>
     </div>
-    <br /><br />
-    <div class="breadcrumb centered"><a data-page="home" class="openpage" href="#"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>Back</a></div>
 </script>

@@ -1,4 +1,6 @@
 {
+  "back" : "home", 
+  "next" : "subject", 
   "default" : "defaultheadline",
   "dimensions" : {
     "price": [{
@@ -21,7 +23,7 @@
       "label": "Nature and landscapes",
       "slug": "natureandlandscapes"
     }, {
-      "label": "City biters",
+      "label": "City hoppers",
       "slug": "citybiters"
     }, {
       "label": "Sailorman",

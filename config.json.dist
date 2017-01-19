@@ -1,0 +1,11 @@
+{
+  "title" : "New Mockup",
+  "subtitle" : "Demo Showcase",
+  "navbar": {
+    "logo" : "costa/clablogo.png",
+    "url" : "http://www.contactlab.com/",
+    "section" : [
+		
+    ]
+  }
+}

@@ -1,10 +1,43 @@
 <script type="text/template" id="jolly-template">
-    <div class="jolly-content">
+    <div class="maincontent jolly-content">
         <div class="content">
             <div class="page-header">
                 <h1>Scelta del box di jolly</h1>
             </div>
-            <div class="centered">
+			<!--<div class="panel panel-default">
+				<div class="panel-body">
+					<h2>Partenze Jolly create:</h2>
+					<ul>
+						<li><a href="#" target="_blank">15 - Caraibi</a></li>
+						<li><a href="#" target="_blank">25 - India Maldive</a></li>
+						<li><a href="#" target="_blank">39 - Marte</a></li>
+					</ul>
+				</div>
+			</div>-->
+                <% _.each(data.dimensions.price, function(pricedimension) { %>
+                    <% _.each(data.dimensions.place, function(placedimension) { %>					
+						<div class="row bottongroups">
+							<div class="col-md-2 ">
+								<b><%= pricedimension.label %></b>
+							</div>
+							<div class="col-md-3 ">
+								<b><%= placedimension.label %></b>
+							</div>
+							<div class="btn-group form-group col-md-4 centered" data-toggle="buttons">
+								<label class="btn btn-default active" data-panel="nojolly">
+									<input name="options" autocomplete="off" checked="" type="radio"> Disable jolly box
+								</label>
+								<label class="btn btn-default gotrue" data-panel="defaultjolly">
+									<input name="options" autocomplete="off" type="radio"> Enable jolly box
+								</label>
+							</div>
+							<div class="col-md-3 viewboxpeoplelist" style="display:none">
+								<a href="#" data-toggle="modal" data-target="#boxjollycreated">Seleziona tra le partenze create</a>
+							</div>
+						</div>
+                    <% }) %>
+                <% }) %>
+            <!--<div class="centered">
                 <div class="btn-group form-group jolly_setting" data-toggle="buttons">
                     <label class="btn btn-default <% if(data.default == 'nojolly') { %>active<% } %>" data-panel="nojolly">
                         <input name="options" id="nojolly_check" autocomplete="off" checked="" type="radio"> Disable jolly box
@@ -13,22 +46,54 @@
                         <input name="options" id="defaultjolly_check" autocomplete="off" type="radio"> Enable jolly box
                     </label>
                 </div>
-            </div>
+            </div>-->
             <div class="settings_panel panel panel-success">
+                Se presente per l'utente, nella prossima spedizione sarà un box jolly con il relativo contenuto, nella posizione (top/bottom) ad esso associata.
+            </div>
+        </div>
+        <div class="final-actions save">
+            <button class="btn btn-default save-btn pull-right">Salva Impostazioni</button>
+        </div>
+        <div class="final-actions final-navigation">
+            <button class="btn btn-default back-btn">Indietro</button>
+            <button class="btn btn-default next-btn pull-right">Avanti</button>
+        </div>
+
+        <!-- Modal -->
+        <div id="boxjollycreated" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Box Partenze jolly creati</h4>
+                    </div>
+                    <div class="modal-body listabox">
+                        <div class="style-scope radio-clab">
+                            <input class="style-scope radio-clab" checked="" value="radio-6" id="radio-6" name="people" type="radio">
+                            <label class="style-scope radio-clab" for="radio-6">Partenza Jolly 56 - creato il 11/01/2017 - <a href="#">Visualizza</a></label>
+                        </div>
+                        <div class="style-scope radio-clab">
+                            <input class="style-scope radio-clab" value="radio-7" id="radio-7" name="people" type="radio">
+                            <label class="style-scope radio-clab" for="radio-7">Partenza Jolly 11 - creato il 13/11/2016 - <a href="#">Visualizza</a></label>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
 
             </div>
         </div>
-        <button class="btn btn-default save-btn">Salva</button>
 
         <div class="hidden">
-            <div id="nojolly_panel">
-                <div class="">Non sarà presente alcun box jolly nella prossima spedizione.</div>
-            </div>
-            <div id="defaultjolly_panel">
-                <div class="">Se presente per l'utente, nella prossima spedizione sarà un box jolly con il relativo contenuto, nella posizione (top/bottom) ad esso associata.</div>
-            </div>
+            <!--<div id="nojolly_panel">-->
+                <!--<div class="">Non sarà presente alcun box jolly nella prossima spedizione.</div>-->
+            <!--</div>-->
+            <!--<div id="defaultjolly_panel">-->
+                <!--<div class="">Se presente per l'utente, nella prossima spedizione sarà un box jolly con il relativo contenuto, nella posizione (top/bottom) ad esso associata.</div>-->
+            <!--</div>-->
         </div>
     </div>
-    <br /><br />
-    <div class="breadcrumb centered"><a data-page="home" class="openpage" href="#"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>Back</a></div>
 </script>

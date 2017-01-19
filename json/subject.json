@@ -1,4 +1,6 @@
 {
+  "back" : "headline", 
+  "next" : "sorting", 
   "dimensions" : {
     "price": [{
       "label": "Price no concern",
@@ -12,7 +14,7 @@
     }],
     "place": [{
       "label": "Beach and sea",
-      "slug": "pricenoconcern"
+      "slug": "beachandsea"
     }, {
       "label": "Culture and art",
       "slug": "cultureandart"
@@ -32,14 +34,34 @@
   },
   "settings" : [
     {
-      "tupla" : "Price no concern, Nature and landscapes",
+      "tupla" : "Price no concern | Nature and landscapes",
       "subject" : "Fuggi dallo smog con stile!"
     },{
-      "tupla" : "Price sensitive, Culture and art",
+      "tupla" : "Price sensitive | Culture and art",
       "subject" : "Impara molto e spendi poco!"
     },{
-      "tupla" : "Price no concern, Culture and art",
+      "tupla" : "Price no concern | Culture and art",
       "subject" : "Impara molto con stile!"
     }
-  ]
+  ],
+  "subjectjollys" : {
+    "pricenoconcernbeachandsea" : "Al mare con stile!",
+    "pricenoconcerncultureandart" : "Impara molto con stile!",
+    "pricenoconcernnatureandlandscapes" : "Fuggi dallo smog con stile!",
+    "pricenoconcerncitybiters" : "In città con stile!",
+    "pricenoconcernsailorman" : "Crociera con stile!",
+    "pricenoconcernaroundtheworldadventurers" : "Attorno al mondo con stile!",
+    "valueformoneybeachandsea" : "Al mare con convenienza!",
+    "valueformoneycultureandart" : "Impara con convenienza!",
+    "valueformoneynatureandlandscapes" : "Fuggi dallo smog con convenienza!",
+    "valueformoneycitybiters" : "In città con convenienza!",
+    "valueformoneysailorman" : "In crociera con convenienza!",
+    "valueformoneyaroundtheworldadventurers" : "Intorno al mondo con convenienza!",
+    "pricesensitivebeachandsea" : "Al mare con prezzi assurdi!",
+    "pricesensitivecultureandart" : "Impara molto e spendi poco!",
+    "pricesensitivenatureandlandscapes" : "Fuggi dallo smog e spendi poco!",
+    "pricesensitivecitybiters" : "In città con convenienza!",
+    "pricesensitivesailorman" : "In crociera con convenienza!",
+    "pricesensitivearoundtheworldadventurers" : "Giro del mondo a prezzi assurdi!"
+  }
 }

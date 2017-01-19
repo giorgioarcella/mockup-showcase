@@ -1,10 +1,10 @@
 <script type="text/template" id="special-template">
-    <div class="special-content">
+    <div class="maincontent special-content">
         <div class="content">
             <div class="page-header">
                 <h1>Scelta del box di special</h1>
             </div>
-            <div class="centered">
+            <!--<div class="centered">
                 <div class="btn-group form-group special_setting" data-toggle="buttons">
                     <label class="btn btn-default <% if(data.default == 'nospecial') { %>active<% } %>" data-panel="nospecial">
                         <input name="options" id="nospecial_check" autocomplete="off" checked="" type="radio"> Disable Special box
@@ -13,22 +13,81 @@
                         <input name="options" id="defaultspecial_check" autocomplete="off" type="radio"> Enable Special box
                     </label>
                 </div>
-            </div>
+            </div>-->
+            <% _.each(data.dimensions.people, function(peopledim) { %>
+                <div class="row bottongroups">
+                    <div class="col-md-3 ">
+                        <b><%= peopledim.label %></b>
+                    </div>
+                    <div class="col-md-4 btn-group form-group special_setting" data-toggle="buttons">
+                        <label class="btn btn-default <% if(data.default == 'nospecial') { %>active<% } %>" data-panel="nospecial">
+                            <input name="options" id="nospecial_check" autocomplete="off" checked="" type="radio"> Disable box People
+                        </label>
+                        <label class="btn btn-default gotrue <% if(data.default == 'defaultspecial') { %>active<% } %>" data-panel="defaultspecial">
+                            <input name="options" id="defaultspecial_check" autocomplete="off" type="radio"> Enable box People
+                        </label>
+                    </div>
+                    <div class="col-md-5 form-group viewboxpeoplelist" style="display:none">
+                        <!--<a href="#" data-toggle="modal" data-target="#boxpeoplecreated">Seleziona Box People da inviare</a>-->
+                        <select class="form-control" id="boxpeoples_<%= peopledim.slug %>" name="boxpeoples_<%= peopledim.slug %>">
+                            <% _.each(data.boxpeople[peopledim.slug], function(boxpeoples) { %>
+                                <option value="<%= boxpeoples.postid %>"><%= boxpeoples.title %></option>
+                            <% }) %>
+                        </select>
+                    </div>
+                </div>
+            <% }) %>
             <div class="settings_panel panel panel-success">
 
             </div>
         </div>
-        <button class="btn btn-default save-btn">Salva</button>
+        <div class="final-actions save">
+            <button class="btn btn-default save-btn pull-right">Salva Impostazioni</button>
+        </div>
+        <div class="final-actions final-navigation">
+            <button class="btn btn-default back-btn">Indietro</button>
+            <button class="btn btn-default next-btn pull-right">Avanti</button>
+        </div>
+
+        <!-- Modal -->
+        <div id="boxpeoplecreated" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Box People Creati</h4>
+                    </div>
+                    <div class="modal-body listabox">
+                        <div class="style-scope radio-clab">
+                            <input class="style-scope radio-clab" checked="" value="radio-6" id="radio-6" name="people" type="radio">
+                            <label class="style-scope radio-clab" for="radio-6">Box People 25 - creato il 14/01/2017 - <a href="#">Visualizza</a></label>
+                        </div>
+                        <div class="style-scope radio-clab">
+                            <input class="style-scope radio-clab" value="radio-7" id="radio-7" name="people" type="radio">
+                            <label class="style-scope radio-clab" for="radio-7">Box People 18 - creato il 15/11/2016 - <a href="#">Visualizza</a></label>
+                        </div>
+                        <div class="style-scope radio-clab">
+                            <input class="style-scope radio-clab" value="radio-8" id="radio-8" name="people" type="radio">
+                            <label class="style-scope radio-clab" for="radio-8">Box People 16 - creato il 14/08/2016 - <a href="#">Visualizza</a></label>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
 
         <div class="hidden">
             <div id="nospecial_panel">
-                <div class="">Non sarà presente alcun box Special nella prossima spedizione.</div>
+                <div class="">Non sarà presente alcun box People nella prossima spedizione.</div>
             </div>
             <div id="defaultspecial_panel">
-                <div class="">Se presente per l'utente, nella prossima spedizione sarà un box Special con il relativo contenuto, nella posizione (top/bottom) ad esso associata.</div>
+                <div class="">Se presente per l'utente, nella prossima spedizione sarà un box People con il relativo contenuto, nella posizione (top/bottom) ad esso associata.</div>
             </div>
         </div>
     </div>
-    <br /><br />
-    <div class="breadcrumb centered"><a data-page="home" class="openpage" href="#"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>Back</a></div>
 </script>

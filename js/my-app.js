@@ -30,19 +30,13 @@ var app = {
         //Caricamento file di configurazione (comprende menu e serie di views per home e navigazione)
         $.getJSON( "config.json", function( appsettings ) {
             self.appsettings = appsettings;
-            $.get('templates/navigation.html',
-                {},
-                function(ret){
 
-                    var template = _.template(ret);
-                    var vars = {data: appsettings};
-                    var html = template(vars);
-                    $('.navigation').html(html);
-
-                    //$('.navigation').html(ret);
-                },
-                'text'
-            );
+            //Recupero template navigation
+            var ret = $('#navigation-template').html();
+            var template = _.template(ret);
+            var vars = {data: appsettings};
+            var html = template(vars);
+            $('.navigation').html(html);
 
             $.ajaxSetup({beforeSend: function(xhr){
                 if (xhr.overrideMimeType)
@@ -55,7 +49,7 @@ var app = {
         }).fail( function(d, textStatus, error) {
             $('.container').html("<h1>No config.json file found!</h1><p>getJSON failed, status: " + textStatus + ", error: "+error+"</p>");
             console.error("getJSON failed, status: " + textStatus + ", error: "+error);
-        });;
+        });
     },
 
     //Mostro loader animato
@@ -86,7 +80,7 @@ var app = {
                 $.getJSON( "json/"+name+".json", function( data ) {
                     $.extend(data, {"appsettings" : self.appsettings});
                     self.render(name, data);
-
+					
                     //Events
                     if(name == 'home'){
                         $('li.home-nav').addClass('active');
@@ -95,6 +89,8 @@ var app = {
                         self.subjectpage(data);
                     }else if(name == 'sorting'){
                         self.sortingpage(data);
+                    }else if(name == 'availability'){
+                        self.availabilitypage(data);
                     }else if(name == 'limitnumber'){
                         self.limitnumberpage(data);
                     }else if(name == 'headline'){
@@ -105,6 +101,8 @@ var app = {
                         self.jollypage(data);
                     }else if(name == 'onetoone'){
                         self.onetoonepage(data);
+                    }else if(name == 'preview'){
+                        self.previewpage(data);
                     }
                     $('.openpage').off();
                     $('.openpage').click(function(){
@@ -121,6 +119,7 @@ var app = {
     //Renderizzo la view passando al template i dati
     render: function(name, data){
         var self = this;
+		
         var template = _.template($('#' + name + '-template').html());
         var vars = {data: data};
         var html = template(vars);
@@ -137,26 +136,33 @@ var app = {
             }
         });
 
-        //Salvataggio delle impostazioni su json
+        //Torno alla sezione precedente
+        $('.back-btn').off();
+        $('.back-btn').click(function(){
+			self.opensection(data.back);
+        });
+
+        //Passo alla sezione successiva
+        $('.next-btn').off();
+        $('.next-btn').click(function(){
+			self.opensection(data.next);
+        });
+
+        //Finto salvataggio
         $('.save-btn').off();
         $('.save-btn').click(function() {
-            $(this).fadeOut(function(){
-                $(this).after('<div class="panel-success centered success">Salvataggio avvenuto correttamente!</div>');
-                setTimeout(function(){
-                    self.showLoader();
-                    setTimeout(function(){
-                        self.hideLoader();
-                        self.opensection('home');
-                    },1000);
-                },800);
+			self.showLoader();
+            $('.final-actions.save').fadeOut(function(){
+                $(this).after('<div class="final-actions panel-success centered success">Salvataggio avvenuto correttamente!</div>');
+				setTimeout(function(){
+					self.hideLoader();
+				},500);
             });
         });
     },
 
     homepage: function(){
-        var template = _.template($('#home-template').html());
-        var html = template({});
-        $('.container').html(html);
+        var $padre = $('.home-content');
     },
 
     subjectpage: function(data){
@@ -170,7 +176,7 @@ var app = {
         $padre.find('.save-icon').off();
         $padre.find('.save-icon').click(function(){
             $padre.find('.choose_tupla input').removeClass('notfilled');
-            var tupla = $padre.find('#subject_price option:selected').text()+', '+$padre.find('#subject_place option:selected').text();
+            var tupla = $padre.find('#subject_price option:selected').text()+' | '+$padre.find('#subject_place option:selected').text();
             var subject = $padre.find('#subject_text').val();
             var salva = false;
             if(subject != ''){
@@ -211,6 +217,10 @@ var app = {
         var $padre = $('.sorting-content');
     },
 
+    availabilitypage: function(data){
+        var $padre = $('.availability-content');
+    },
+
     limitnumberpage: function(data){
         var $padre = $('.limitnumber-content');
 
@@ -227,13 +237,9 @@ var app = {
             var salva = false;
             if(number != '' && parseInt(number) <= 20){
                 $.each(data.settings, function(i,v){
-                    //if(v.tupla == tupla){
-                    //    salva = false;
-                    //}else{
                         if(!$padre.find('#number_text').hasClass('notfilled')){
                             salva = true;
                         }
-                    //}
                     $padre.find('.number_saved input').each(function(){
                         if($(this).val() == tupla) {
                             salva = false;
@@ -270,6 +276,11 @@ var app = {
         $padre.find('.headline_setting .btn').click(function(){
             var panel_active = $(this).attr('data-panel');
             $padre.find('.settings_panel').html($padre.find('#'+panel_active+'_panel').html());
+            if($(this).hasClass('jolly')){
+                $(this).parents('.row').find('.viewboxheadlinelist').fadeIn();
+            }else{
+                $(this).parents('.row').find('.viewboxheadlinelist').fadeOut();
+            }
         });
     },
 
@@ -279,38 +290,85 @@ var app = {
         var panel_default = $padre.find('.special_setting .btn.active').attr('data-panel');
         $padre.find('.settings_panel').html($padre.find('#'+panel_default+'_panel').html());
 
-        $padre.find('.special_setting .btn').off();
-        $padre.find('.special_setting .btn').click(function(){
+        $padre.find('.bottongroups .btn').off();
+        $padre.find('.bottongroups .btn').click(function(){
             var panel_active = $(this).attr('data-panel');
             $padre.find('.settings_panel').html($padre.find('#'+panel_active+'_panel').html());
+            if($(this).hasClass('gotrue')){
+                $(this).parents('.row').find('.viewboxpeoplelist').fadeIn();
+            }else{
+                $(this).parents('.row').find('.viewboxpeoplelist').fadeOut();
+            }
         });
     },
 
     jollypage: function(data){
         var $padre = $('.jolly-content');
 
-        var panel_default = $padre.find('.jolly_setting .btn.active').attr('data-panel');
-        $padre.find('.settings_panel').html($padre.find('#'+panel_default+'_panel').html());
-
-        $padre.find('.jolly_setting .btn').off();
-        $padre.find('.jolly_setting .btn').click(function(){
-            var panel_active = $(this).attr('data-panel');
-            $padre.find('.settings_panel').html($padre.find('#'+panel_active+'_panel').html());
+        $padre.find('.bottongroups .btn').off();
+        $padre.find('.bottongroups .btn').click(function(){
+            //var panel_active = $(this).attr('data-panel');
+            //$padre.find('.settings_panel').html($padre.find('#'+panel_active+'_panel').html());
+            if($(this).hasClass('gotrue')){
+                $(this).parents('.row').find('.viewboxpeoplelist').fadeIn();
+            }else{
+                $(this).parents('.row').find('.viewboxpeoplelist').fadeOut();
+            }
         });
     },
 
     onetoonepage: function(data){
         var $padre = $('.onetoone-content');
-
-        var panel_default = $padre.find('.onetoone_setting .btn.active').attr('data-panel');
-        $padre.find('.settings_panel').html($padre.find('#'+panel_default+'_panel').html());
-
-        $padre.find('.onetoone_setting .btn').off();
-        $padre.find('.onetoone_setting .btn').click(function(){
-            var panel_active = $(this).attr('data-panel');
-            $padre.find('.settings_panel').html($padre.find('#'+panel_active+'_panel').html());
-        });
-    }
+    },
+	
+	previewpage: function(data){
+        var $padre = $('.preview-content');
+		
+		$padre.find('select').on('change', function(){
+			if(($padre.find('select#preview_price').val() != null) && ($padre.find('select#preview_place').val() != null)){
+				var tupla = $padre.find('select#preview_price').val()+'-'+$padre.find('select#preview_place').val();
+				console.log(data.settings[tupla]);
+				if(data.settings[tupla] != ''){
+					var vars = {dati: data.settings[tupla]};
+					console.log(vars);
+					var template = _.template($('#previewdata-template').html());
+					var html = template(vars);
+					$padre.find('.loadedsettings').html(html);
+				}
+			}
+		});
+		
+		/*
+		$padre.find(".slides").sortable({
+			placeholder: 'slide-placeholder',
+			axis: "y",
+			revert: 150,
+			start: function(e, ui){
+				
+				placeholderHeight = ui.item.outerHeight();
+				ui.placeholder.height(placeholderHeight + 15);
+				$('<div class="slide-placeholder-animator" data-height="' + placeholderHeight + '"></div>').insertAfter(ui.placeholder);
+			
+			},
+			change: function(event, ui) {				
+				ui.placeholder.stop().height(0).animate({
+					height: ui.item.outerHeight() + 15
+				}, 300);				
+				placeholderAnimatorHeight = parseInt($(".slide-placeholder-animator").attr("data-height"));				
+				$padre.find(".slide-placeholder-animator").stop().height(placeholderAnimatorHeight + 15).animate({
+					height: 0
+				}, 300, function() {
+					$(this).remove();
+					placeholderHeight = ui.item.outerHeight();
+					$('<div class="slide-placeholder-animator" data-height="' + placeholderHeight + '"></div>').insertAfter(ui.placeholder);
+				});				
+			},
+			stop: function(e, ui) {				
+				$padre.find(".slide-placeholder-animator").remove();				
+			},
+		});
+		*/
+	}
 
 };
 

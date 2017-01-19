@@ -1,4 +1,6 @@
 {
+  "back" : "special", 
+  "next" : "preview", 
   "default" : "nojolly",
   "dimensions" : {
     "price": [{

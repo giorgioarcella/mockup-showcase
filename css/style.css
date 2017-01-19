@@ -8,6 +8,36 @@
 .hidden{
     display: none;
 }
+.btn-group .btn.gotrue.active{
+    background: palegreen;
+}
+.panel{
+    margin-top: 20px;
+}
+div.row.bottongroups{
+    line-height: 60px;
+}
+div.row.abbassatitoli:nth-last-child, div.row.bottongroups:nth-last-child(1){
+    border-bottom: 1px solid #ddd;
+}
+div.row.bottongroups div:nth-last-child(1){
+    text-align: right;
+}
+div.row.abbassatitoli, div.row.bottongroups{
+    border-top: 1px solid #ddd;
+}
+div.row.abbassatitoli .titolo{
+    line-height: 75px;
+}
+div.row.abbassatitoli .form-group, div.row.bottongroups .form-group{
+    margin: 10px 0px;
+}
+div.row.abbassatitoli:nth-child(even), div.row.bottongroups:nth-child(even){
+    background-color: #ececec;
+}
+div.modal-body.listabox{
+    padding: 10px;
+}
 /*Stile generale bottoni e liste*/
 .actions-icon{
     font-size: 30px;
@@ -31,6 +61,18 @@
 }
 .panel-success.success{
     background-color: palegreen;
+}
+.final-actions{
+	margin: 20px auto 20px auto;
+    min-height: 35px;
+    clear: both;
+}
+.final-actions.final-navigation{
+    border-top: 1px solid #ddd;
+    padding-top: 20px;
+}
+.container .maincontent{
+	margin-bottom: 50px;
 }
 /*Loader*/
 .loadingclab{
@@ -70,7 +112,59 @@ html body .spinner-overlay .spinner{
 .navbar-collapse {
     text-align: center;
 }
+/*Preview*/
+.preview-content ul{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+.preview-content ul li{
+    padding: 10px;
+    margin: 0 0 15px;
+    text-align: center;
+    background-color: #ccc;
+	vertical-align: middle;
+}
+.preview-content ul li.slide {
+}
+/*.preview-content ul li.slide:hover {
+    background-color: #cfcfcf;
+	cursor:all-scroll;
+}*/
 
+.preview-content .slide-placeholder {
+    background: #DADADA;
+    position: relative;
+}
+.preview-content .slide-placeholder:after {
+    content: " ";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 15px;
+    background-color: transparent;
+}
+.preview-content .default{
+	color: #999;
+	background-color: #ccc;
+}
+.preview-content .headline {
+    min-height: 100px;
+}
+.preview-content .partenze {
+    min-height: 80px;
+}
+.preview-content .jolly {
+    min-height: 60px;
+}
+.preview-content .people {
+    min-height: 40px;
+}
+.preview-content .voucher {
+    min-height: 40px;
+}
 /*Responsive*/
 @media (min-width:991px){
     .ordine_sorting{

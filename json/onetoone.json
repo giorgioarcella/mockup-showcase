@@ -1,11 +1,10 @@
 {
+  "back" : "availability", 
+  "next" : "special", 
   "default" : "noonetoone",
   "position" : "top",
   "dimensions" : {
     "price": [{
-      "label": "Price no concern",
-      "slug": "pricenoconcern"
-    }, {
       "label": "Value for money",
       "slug": "valueformoney"
     }, {
