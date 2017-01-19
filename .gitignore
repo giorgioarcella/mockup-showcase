@@ -1,4 +1,6 @@
-json/*
-templates/*
 .idea
 config.json
+json/*
+templates/*
+!templates/.gitkeep
+!json/.gitkeep 
