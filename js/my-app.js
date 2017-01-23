@@ -233,46 +233,59 @@ var app = {
     limitnumberpage: function(data){
         var $padre = $('.limitnumber-content');
 
-        $padre.find('.delete-icon').off();
-        $padre.find('.delete-icon').click(function() {
-            $(this).parents('div.row').remove();
-        });
-
-        $padre.find('.save-icon').off();
-        $padre.find('.save-icon').click(function(){
-            $padre.find('.choose_tupla input').removeClass('notfilled');
-            var tupla = $padre.find('#number_price option:selected').text()+', '+$padre.find('#number_place option:selected').text();
-            var number = $padre.find('#number_text').val();
-            var salva = false;
-            if(number != '' && parseInt(number) <= 20){
-                $.each(data.settings, function(i,v){
-                        if(!$padre.find('#number_text').hasClass('notfilled')){
-                            salva = true;
-                        }
-                    $padre.find('.number_saved input').each(function(){
-                        if($(this).val() == tupla) {
-                            salva = false;
-                        }
-                    });
-                });
-                if(salva == true){
-                    $padre.find('.number_saved').append('<div class="row"> <div class="col-md-8 form-group"> <label>Dimensione: </label> <input class="form-control" disabled value="'+tupla+'" /> </div> <div class="col-md-3 form-group"> <label>Number of departures: </label> <input class="form-control" disabled value="'+number+'" /> </div> <div class="col-md-1 actions-icon delete-icon"> <span class="glyphicon glyphicon-trash" aria-hidden="true"></span> </div> </div>')
-                    $padre.find('.delete-icon').off();
-                    $padre.find('.delete-icon').click(function() {
-                        $(this).parents('div.row').remove();
-                    });
-                    $padre.find('.errormsg').empty();
-                    $padre.find('#number_text').val('');
-                    salva = false;
-                }else{
-                    $padre.find('.errormsg').html('Tupla già presente');
-                }
+        //Limita per tutti i cluster
+        $padre.find('#limitnumber_all_check').on('change', function(){
+            if($(this).prop('checked')){
+                $padre.find('#limitnumber_all').removeAttr('disabled');
+                $padre.find('.bottongroups.cluster').fadeOut();
             }else{
-                salva = false;
-                $padre.find('#number_text').addClass('notfilled');
-                $padre.find('.errormsg').html('Compilare i campi correttamente');
+                $padre.find('#limitnumber_all').attr('disabled', true);
+                $padre.find('.bottongroups.cluster').fadeIn();
             }
         });
+        $padre.find('#limitnumber_all').on('change', function(){
+            $padre.find('div.bottongroups.cluster select').val($(this).val());
+        });
+
+        //$padre.find('.delete-icon').off();
+        //$padre.find('.delete-icon').click(function() {
+        //    $(this).parents('div.row').remove();
+        //});
+        //$padre.find('.save-icon').off();
+        //$padre.find('.save-icon').click(function(){
+        //    $padre.find('.choose_tupla input').removeClass('notfilled');
+        //    var tupla = $padre.find('#number_price option:selected').text()+', '+$padre.find('#number_place option:selected').text();
+        //    var number = $padre.find('#number_text').val();
+        //    var salva = false;
+        //    if(number != '' && parseInt(number) <= 20){
+        //        $.each(data.settings, function(i,v){
+        //                if(!$padre.find('#number_text').hasClass('notfilled')){
+        //                    salva = true;
+        //                }
+        //            $padre.find('.number_saved input').each(function(){
+        //                if($(this).val() == tupla) {
+        //                    salva = false;
+        //                }
+        //            });
+        //        });
+        //        if(salva == true){
+        //            $padre.find('.number_saved').append('<div class="row"> <div class="col-md-8 form-group"> <label>Dimensione: </label> <input class="form-control" disabled value="'+tupla+'" /> </div> <div class="col-md-3 form-group"> <label>Number of departures: </label> <input class="form-control" disabled value="'+number+'" /> </div> <div class="col-md-1 actions-icon delete-icon"> <span class="glyphicon glyphicon-trash" aria-hidden="true"></span> </div> </div>')
+        //            $padre.find('.delete-icon').off();
+        //            $padre.find('.delete-icon').click(function() {
+        //                $(this).parents('div.row').remove();
+        //            });
+        //            $padre.find('.errormsg').empty();
+        //            $padre.find('#number_text').val('');
+        //            salva = false;
+        //        }else{
+        //            $padre.find('.errormsg').html('Tupla già presente');
+        //        }
+        //    }else{
+        //        salva = false;
+        //        $padre.find('#number_text').addClass('notfilled');
+        //        $padre.find('.errormsg').html('Compilare i campi correttamente');
+        //    }
+        //});
     },
 
     headlinepage: function(data){
@@ -338,44 +351,41 @@ var app = {
 				var tupla = $padre.find('select#preview_price').val()+'-'+$padre.find('select#preview_place').val();
 				if(data.settings[tupla] != ''){
 					var vars = {dati: data.settings[tupla]};
-					console.log(vars);
 					var template = _.template($('#previewdata-template').html());
 					var html = template(vars);
 					$padre.find('.loadedsettings').html(html);
 				}
 			}
 		});
-		
-		/*
-		$padre.find(".slides").sortable({
-			placeholder: 'slide-placeholder',
-			axis: "y",
-			revert: 150,
-			start: function(e, ui){
-				
-				placeholderHeight = ui.item.outerHeight();
-				ui.placeholder.height(placeholderHeight + 15);
-				$('<div class="slide-placeholder-animator" data-height="' + placeholderHeight + '"></div>').insertAfter(ui.placeholder);
-			
-			},
-			change: function(event, ui) {				
-				ui.placeholder.stop().height(0).animate({
-					height: ui.item.outerHeight() + 15
-				}, 300);				
-				placeholderAnimatorHeight = parseInt($(".slide-placeholder-animator").attr("data-height"));				
-				$padre.find(".slide-placeholder-animator").stop().height(placeholderAnimatorHeight + 15).animate({
-					height: 0
-				}, 300, function() {
-					$(this).remove();
-					placeholderHeight = ui.item.outerHeight();
-					$('<div class="slide-placeholder-animator" data-height="' + placeholderHeight + '"></div>').insertAfter(ui.placeholder);
-				});				
-			},
-			stop: function(e, ui) {				
-				$padre.find(".slide-placeholder-animator").remove();				
-			},
-		});
-		*/
+
+		//$padre.find(".slides").sortable({
+		//	placeholder: 'slide-placeholder',
+		//	axis: "y",
+		//	revert: 150,
+		//	start: function(e, ui){
+		//
+		//		placeholderHeight = ui.item.outerHeight();
+		//		ui.placeholder.height(placeholderHeight + 15);
+		//		$('<div class="slide-placeholder-animator" data-height="' + placeholderHeight + '"></div>').insertAfter(ui.placeholder);
+		//
+		//	},
+		//	change: function(event, ui) {
+		//		ui.placeholder.stop().height(0).animate({
+		//			height: ui.item.outerHeight() + 15
+		//		}, 300);
+		//		placeholderAnimatorHeight = parseInt($(".slide-placeholder-animator").attr("data-height"));
+		//		$padre.find(".slide-placeholder-animator").stop().height(placeholderAnimatorHeight + 15).animate({
+		//			height: 0
+		//		}, 300, function() {
+		//			$(this).remove();
+		//			placeholderHeight = ui.item.outerHeight();
+		//			$('<div class="slide-placeholder-animator" data-height="' + placeholderHeight + '"></div>').insertAfter(ui.placeholder);
+		//		});
+		//	},
+		//	stop: function(e, ui) {
+		//		$padre.find(".slide-placeholder-animator").remove();
+		//	}
+		//});
 	},
 
     schedulationpage: function(data){

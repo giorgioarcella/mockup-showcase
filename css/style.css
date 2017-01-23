@@ -8,6 +8,9 @@
 .hidden{
     display: none;
 }
+.btn{
+    border-radius: 0px;
+}
 .btn-group .btn.gotrue.active{
     background: palegreen;
 }
@@ -121,6 +124,9 @@ html body .spinner-overlay .spinner{
 }
 .navbar-collapse {
     text-align: center;
+}
+.navbar-collapse.in {
+    background: rgb(248, 248, 248);
 }
 /*Preview*/
 .preview-content ul.htmlblocks{
