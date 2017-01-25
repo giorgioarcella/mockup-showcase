@@ -397,9 +397,9 @@ var app = {
                 $(this).parents('.row').find('.date').fadeOut();
             }
         });
-        $padre.find('.datepickerschedulation').datepicker({
-            format: 'mm/dd/yyyy',
-            startDate: '+1d'
+        var currentDate = new Date(new Date().getTime() + 24 * 60 * 60 * 1000);
+        $padre.find('.datepickerschedulation').datetimepicker({
+            minDate: currentDate
         });
     }
 
