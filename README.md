@@ -82,4 +82,4 @@ Finally, it should be added in config.json file the object for the new view crea
 
 ## Authors
 
-* **Giorgio Arcella** - * ContactLab Mockup Showcase * - [github.com/giorgioarcella](https://github.com/giorgioarcella)
+* **Giorgio Arcella** - * Mockup Showcase * - [github.com/giorgioarcella](https://github.com/giorgioarcella)
